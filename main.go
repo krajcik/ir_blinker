@@ -228,5 +228,9 @@ func initConf() error {
 }
 
 func getRpmByCar(car string) ([]int, error) {
-	return vehiclesCfg[car], nil
+	rpm, ok := vehiclesCfg[car]
+	if ok == false {
+		return []int{}, errors.New("config not found")
+	}
+	return rpm, nil
 }
